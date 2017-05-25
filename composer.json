@@ -1,0 +1,11 @@
+{
+  "name": "allan23/wp-helpers",
+  "description": "A few helper classes to speed up development.",
+  "license": "GPLv2 or later",
+  "authors": [
+    {
+      "name": "Allan Collins",
+      "email": "allan@collinsinternet.com"
+    }
+  ]
+}
