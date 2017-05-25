@@ -2,6 +2,10 @@
 
 namespace WP_Helpers;
 
+/**
+ * Class Form
+ * @package WP_Helpers
+ */
 class Form {
 	/**
 	 * @param array $field_data Array of field data (id, label, and value)
