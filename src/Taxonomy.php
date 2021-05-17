@@ -49,6 +49,6 @@ class Taxonomy {
 
 		$args = array_merge( $default_args, $args );
 
-		register_post_type( $taxonomy, apply_filters( 'wp-helpers/taxonomy-post-types', [ 'post' ] ), $args );
+		register_taxonomy( $taxonomy, apply_filters( 'wp-helpers/taxonomy-post-types', [ 'post' ] ), $args );
 	}
 }
