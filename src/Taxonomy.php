@@ -16,8 +16,8 @@ class Taxonomy {
 	 * @param array $labels Override the default labels.
 	 * @param array $args Override the default arguments.
 	 */
-	public static function generate( $taxonomy, $nice_name, $labels = array(), $args = array() ) {
-		$default_labels = array(
+	public static function generate( $taxonomy, $nice_name, $labels = [], $args = [] ) {
+		$default_labels = [
 			'name'               => esc_html_x( $nice_name, 'taxonomy general name', self::$textdomain ),
 			'singular_name'      => esc_html_x( $nice_name, 'taxonomy singular name', self::$textdomain ),
 			'menu_name'          => esc_html_x( $nice_name, 'admin menu', self::$textdomain ),
@@ -32,23 +32,23 @@ class Taxonomy {
 			'parent_item_colon'  => esc_html__( 'Parent ' . $nice_name . ':', self::$textdomain ),
 			'not_found'          => esc_html__( 'None found.', self::$textdomain ),
 			'not_found_in_trash' => esc_html__( 'None found in Trash.', self::$textdomain )
-		);
+		];
 
 		$labels = array_merge( $labels, $default_labels );
 
-		$default_args = array(
-			'labels'             => $labels,
-			'description'        => esc_html__( '', self::$textdomain ),
-			'show_ui'            => true,
-			'query_var'          => true,
-			'rewrite'            => array( 'slug' => $taxonomy ),
-			'hierarchical'       => false,
+		$default_args = [
+			'labels'                => $labels,
+			'description'           => esc_html__( '', self::$textdomain ),
+			'show_ui'               => true,
+			'query_var'             => true,
+			'rewrite'               => [ 'slug' => $taxonomy ],
+			'hierarchical'          => false,
 			'update_count_callback' => '_update_post_term_count',
 			'show_admin_column'     => true,
-		);
+		];
 
 		$args = array_merge( $default_args, $args );
 
-		register_post_type( $taxonomy, $args );
+		register_post_type( $taxonomy, apply_filters( 'wp-helpers/taxonomy-post-types', [ 'post' ] ), $args );
 	}
 }
