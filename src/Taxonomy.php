@@ -13,8 +13,8 @@ class Taxonomy {
 	 *
 	 * @param string $taxonomy Name of taxonomy.
 	 * @param string $nice_name Human readable name of taxonomy.
-	 * @param array $labels Override the default labels.
-	 * @param array $args Override the default arguments.
+	 * @param array  $labels Override the default labels.
+	 * @param array  $args Override the default arguments.
 	 */
 	public static function generate( $taxonomy, $nice_name, $labels = [], $args = [] ) {
 		$default_labels = [
@@ -31,7 +31,7 @@ class Taxonomy {
 			'search_items'       => esc_html__( 'Search ' . $nice_name, self::$textdomain ),
 			'parent_item_colon'  => esc_html__( 'Parent ' . $nice_name . ':', self::$textdomain ),
 			'not_found'          => esc_html__( 'None found.', self::$textdomain ),
-			'not_found_in_trash' => esc_html__( 'None found in Trash.', self::$textdomain )
+			'not_found_in_trash' => esc_html__( 'None found in Trash.', self::$textdomain ),
 		];
 
 		$labels = array_merge( $labels, $default_labels );
@@ -49,6 +49,6 @@ class Taxonomy {
 
 		$args = array_merge( $default_args, $args );
 
-		register_taxonomy( $taxonomy, apply_filters( 'wp-helpers/taxonomy-post-types', [ 'post' ] ), $args );
+		register_taxonomy( $taxonomy, apply_filters( 'wp-helpers/taxonomy-post-types', [ 'post' ], $taxonomy ), $args );
 	}
 }
